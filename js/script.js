@@ -6,3 +6,5 @@ var queryUrl= `https://api.themoviedb.org/3/search/movie?query=Garlic&api_key=b7
   }).then(function (data) {
 console.log(data)
     })
+
+    console.log('hi');
