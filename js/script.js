@@ -40,7 +40,8 @@ var foodDetails = {
   Meal : "",          
   Catagory : "",
   Area: "",
-  Ingredients : []        // an array is needed here
+  Ingredients : [],        // an array is needed here
+  foodImage
   //etc....
 }
 
@@ -49,7 +50,8 @@ var foodDetails = {
 var movieDetails = {
   Title : "",             
   Genre : "",
-  Actors : []     
+  Actors : [],    
+  movieImage 
   //etc....
   }
 var moviesList = []
@@ -101,24 +103,41 @@ function searchForMealAndMovies() {
 
 
 
-
-
 // SUPPORTING FUNCTIONS
 
-// (Get User Input, Validate User Input and Populate Variable
-function getUserInputAndValidate() {}
+// Get User Input, Validate User Input and Populate Variable
+function getUserInputAndValidate() {
+  // get user input from the webpage
+
+  // if the user has not entered anything at all, display an error message (eg. "please enter a meal")
+
+}
 
 // Reset screen (clear any existing search results)
-function resetScreen() {}
+function resetScreen() {
+  // clear any existing search results (movies) from the screen
+}
+
 
 // Search "Food API" for the Meal that user entered and Populate food API variables with results
-function searchFoodAPI() {}
+function searchFoodAPI() {
+  // search the Food API
+  
+  // populate the variable (object) foodDetails with data returned from 
+}
 
-// If the "Food API" returned No Data, let the user know (update screen) and STOP (exit this function)
-function validateFoodAPIData() {}
+// If the "Food API" returned No Data, let the user know 
+function validateFoodAPIData() {
+  // if the variable foodDetails contains no values, let the user know (display message on webpage)
+}
 
 // Display the results from the "Food API" (update screen using foodAPI variables)
-function displayResultsFromFoodAPI() {}
+function displayResultsFromFoodAPI() {
+  // populate the screen with the values from the variable foodDetails
+  // note : at the moment we are only displaying the food name (foodAPI.Meal) and image (foodAPI.foodImage)
+}
+
+
 
 // Search "Movie API" and Populate movieList variable with results
 function searchMovieAPI(searchString) {
@@ -131,16 +150,25 @@ function searchMovieAPI(searchString) {
       return response.json();
   }).then(function (data) {
       console.log(data)
-    })
+    });
 
-    // save movies returned by API
+  // For each movie returned by the Movie API
+    
+      // save movies details to the variable (object) movieDetails
 
-    // etc......
+      // add the movie (movieDetails) to the moviesList array
+      // note : preferbly we wont add movies that already exit in the array
+
+
 
 }
 
 // Display the results from the "Movie API" (update screen using movieList variable)
-function displayResultsFromMovieAPI() {}
+function displayResultsFromMovieAPI() {
+
+  // display the first Movie in the list (the array called movieDetails) onto the screen
+  
+}
 
 
 
@@ -156,5 +184,4 @@ init()
 function init() {
   console.log("Javascript reference ok")
 }
-
 
