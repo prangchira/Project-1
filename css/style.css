@@ -4,6 +4,20 @@ html {
   
 }
 
+/* Navigation bar */
+nav {
+  background-color: black;
+}
+
+.navbar-brand{
+  font-size: 25px;
+}
+
+.nav-item {
+  padding: 10px;
+}
+
+/* Hero section for user input */
 .hero-bg-image {
   min-height: 500px;
   height: 70vh;
@@ -20,28 +34,13 @@ html {
   background-size: cover;
 }
 
-nav {
-  background-color: black;
-}
-
-.navbar-brand{
-  font-size: 25px;
-}
-
-.nav-item {
-  padding: 10px;
-}
-
+/* User result section */
 .hidden{
   display: none;
 }
 
-h1 {
-  color: red;
-  text-align: left;
-}
-
-h4, h6{
+/* Footer section */
+h6{
   text-align: center;
 }
 
@@ -49,7 +48,11 @@ h4, h6{
   list-style-type: none;
   display: flex;
   flex-direction: row;
-  align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
   padding: 20px;
+}
+
+.footer-item {
+    color: white;
+    padding: 10px;
 }
