@@ -26,7 +26,7 @@
                               <a class="sign-up" href="registration page">Sign Up</a>
                           </div>
                   </li>
-                  <!-- Logo Heading -->
+                  <!-- page name -->
                   <li class="nav-item">
                       <h1 id="page-name">Movie picker</h1>
                   </li>
@@ -34,21 +34,38 @@
                   <li class="nav-item">
                       <div class="search-container">
                           <input id="search-input" type="text" placeholder="Search...">
-                          <button id="search-btn" type="submit">Search &#128269;</button>
+                          <button id="search-btn" class="search-btn" type="button">Search &#128269;</button>
                       </div>
                   </li>
                   <!-- Shuffle Button -->
                   <li class="nav-item">
-                      <button id="shuffle-btn" type="submit">shuffle</button>
+                      <button id="shuffle-btn" type="button">shuffle</button>
                   </li>
               </ul>
           </div>
 
       </div>
     </header>
-
-    <main>
-    </main>
+<!-- Container for content of the landing page -->
+    <div class="container">
+        <!-- Main content section -->
+        <main class="landing-page">
+            <!-- Background image for the landing page -->
+            <div class="bg-img"><img src="#" alt="searching movie"></div>
+            <!-- Introduction paragraph -->
+            <p>You've cooked a lovely meal and now you're stuck for something to watch?
+                <br>
+                Enter your meal below and we will pair your meal with a film</p>
+                <!-- Search bar section to input meal and search for a movie -->
+            <div id="search-bar" class="search-bar">
+                 <!-- Input for entering the meal -->
+                <input id="sbar-input" class="sbar-input" type="text" placeholder="Enter your meal">
+                <!-- Button to trigger the movie search -->
+                <button id="sbar-btn"  class="sbar-btn" type="button">Search Movie</button>
+            </div>
+        </main>
+    </div>
+   
 
     <footer>        
        <!-- Footer Navigation -->
