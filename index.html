@@ -12,43 +12,72 @@
   <body>
     <header>
         <!-- Navigation Bar -->
-        <div  id="navbar"  class="navbar" >
-          <div class="nav-container">
+        <nav  class="navbar bg-body-tertiary" >
+          <div class="container-fluid" id="navbar">
               <!-- Unordered List for Navigation Items -->
-              <ul class="navbar-ul">
-                  <!-- Home Link -->
-                  <li class="nav-item">
-                  <a id="home-btn" href="..." class="home-button"><img src="icon-home.svg" alt="home logo" class="home-icon"></a>
-                  </li>
-                  <!-- Sign Up Link -->
-                  <li class="nav-item">
-                          <div class="sign-up-btn">
-                              <a class="sign-up" href="registration page">Sign Up</a>
-                          </div>
-                  </li>
-                  <!-- Logo Heading -->
-                  <li class="nav-item">
-                      <h1 id="page-name">Movie picker</h1>
-                  </li>
-                  <!-- Search Bar -->
-                  <li class="nav-item">
-                      <div class="search-container">
-                          <input id="search-input" type="text" placeholder="Search...">
-                          <button id="search-btn" type="submit">Search &#128269;</button>
-                      </div>
-                  </li>
-                  <!-- Shuffle Button -->
-                  <li class="nav-item">
-                      <button id="shuffle-btn" type="submit">shuffle</button>
-                  </li>
-              </ul>
+                <ul id="navbar-ul">
+                    <!-- Home Link -->
+                    <li class="nav-item">
+                      <a id="home-btn" href="..."><img src="Img/house.svg" alt="home logo"></a>
+                    </li>
+                    <!-- ============================================= -->
+                    <!-- Sign Up Link -->
+                    <!-- <li class="nav-item">
+                            <div class="sign-up-btn">
+                                <a class="sign-up" href="registration page">Sign Up</a>
+                            </div>
+                    </li> -->
+                    <!-- ============================================== -->
+                    <!-- Logo Heading -->
+                    <li class="nav-item">
+                        <h1 id="page-name">Movie picker</h1>
+                    </li>
+                    <form action="search" class="d-flex">
+                      <input class="form-control me-2" type="search" placeholder="Search for a recipe">
+                      <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form>
+                    <!-- ================================================ -->
+                    <!-- Search Bar -->
+                    <!-- <li class="nav-item">
+                        <div class="search-container">
+                            <input id="search-input" type="text" placeholder="Search...">
+                            <button id="search-btn" type="submit">Search</button>
+                        </div>
+                    </li> -->
+                    <!-- =============================================== -->
+                    <!-- Shuffle Button -->
+                    <li class="nav-item">
+                        <button class="btn btn-outline-success" type="submit">shuffle</button>
+                    </li>
+                </ul>
           </div>
-
-      </div>
+        </nav>
     </header>
 
-    <main>
-    </main>
+    <section>
+      <div class="card" style="width: 18rem;">
+        <img src="..." class="card-img-top" alt="...">
+        <div class="card-body">
+          <p class="card-text">Name of the movie recommendation</p>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="hidden">
+      <div class="card" style="width: 18rem;">
+        <img src="..." class="card-img-top" alt="...">
+        <div class="card-body">
+          <p class="card-text">The name of the recipe the use input</p>
+        </div>
+      </div>
+      <div class="card" style="width: 18rem;">
+        <img src="..." class="card-img-top" alt="...">
+        <div class="card-body">
+          <p class="card-text">Name of the movie recommendation</p>
+        </div>
+      </div>
+    </section>
 
     <footer>        
        <!-- Footer Navigation -->

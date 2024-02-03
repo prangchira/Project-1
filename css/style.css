@@ -1,7 +1,32 @@
-/* header{
-    background-color: aquamarine;
+html {
+  margin: 0 8%;
+  background-color:rgb(96, 96, 96);
 }
+
+body {
+  height: 100vh;
+  border-radius: 10px;
+}
+
+
+#navbar {
+  display: flex;
+  justify-content: center;
+}
+
+#navbar-ul {
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.hidden{
+  display: none;
+}
+
 
 footer{
     background-color: rgb(103, 145, 235);
-} */
+}
