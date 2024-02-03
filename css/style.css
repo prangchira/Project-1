@@ -42,6 +42,7 @@ nav {
 /* Footer section */
 h6{
   text-align: center;
+  padding: 10px;
 }
 
 .footer-ul {
@@ -49,10 +50,9 @@ h6{
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-  padding: 20px;
+  padding: 10px;
 }
 
 .footer-item {
     color: white;
-    padding: 10px;
 }
