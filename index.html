@@ -54,12 +54,19 @@
         </nav>
     </header>
 
-    <section>
-      <div class="card" style="width: 18rem;">
-        <img src="..." class="card-img-top" alt="...">
-        <div class="card-body">
-          <p class="card-text">Name of the movie recommendation</p>
-        </div>
+    <section class="hero-bg-image">
+      <div id="form-container">
+        <form class="row g-3">
+          <h4 style="color: whitesmoke;"> You’ve cooked a lovely meal and now you’re stuck for something to watch? <br> 
+            Enter your meal below and we will pair your meal with a film</h4>
+            <div class="col-3">
+              <label for="inputMeal" class="visually-hidden">Meal</label>
+              <input type="search" class="form-control" id="inputMeal2" placeholder="Enter your meal">
+            </div>
+            <div class="col-3">
+              <button type="submit" class="btn btn-danger mb-3">Find me a movie</button>
+            </div>
+        </form>
       </div>
     </section>
 
