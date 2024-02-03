@@ -20,28 +20,12 @@ html {
   background-size: cover;
 }
 
-.form-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 nav {
   background-color: black;
 }
 
-#navbar {
-  display: flex;
-  justify-content: center;
-}
-
-#navbar-ul {
-  list-style-type: none;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
+.navbar-brand{
+  font-size: 25px;
 }
 
 .nav-item {
