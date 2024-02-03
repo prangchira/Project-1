@@ -12,30 +12,23 @@
   <body>
     <header>
         <!-- Navigation Bar -->
-        <nav  class="navbar">
-          <!-- bg-body-tertiary -->
-          <div class="container-fluid" id="navbar">
-              <!-- Unordered List for Navigation Items -->
-                <ul id="navbar-ul">
-                    <!-- Home Link -->
-                    <li class="nav-item">
-                      <a id="home-btn" href="..."><img src="Img/house.svg" alt="home logo"></a>
-                    </li>
-                    <!-- Logo Heading -->
-                    <li class="nav-item">
-                        <h1 id="page-name" style="color: red;">Movie for munchies</h1>
-                    </li>
-                    <li class="nav-item">
-                    <form action="search" class="d-flex">
-                      <input class="form-control me-2" type="search" placeholder="Search for a recipe">
-                      <button class="btn btn-outline-danger" type="submit">Search</button>
-                    </form>
-                    </li>
-                    <!-- Shuffle Button -->
-                    <li class="nav-item">
-                        <button class="btn btn-outline-danger" type="submit">shuffle</button>
-                    </li>
-                </ul>
+        <nav class="navbar navbar-expand-lg">
+          <div class="container-fluid">
+            <a class="navbar-brand" href="#" style="color: red;">Movies for Munchies</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="#">Home</a>
+                </li>
+              </ul>
+              <form class="d-flex" role="search">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-danger" type="submit">Search</button>
+              </form>
+            </div>
           </div>
         </nav>
     </header>

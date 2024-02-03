@@ -1,6 +1,7 @@
 html {
   margin: 0 8%;
   background-color:rgb(96, 96, 96);
+  
 }
 
 .hero-bg-image {
@@ -24,6 +25,7 @@ html {
   align-items: center;
   justify-content: center;
 }
+
 nav {
   background-color: black;
 }
@@ -39,20 +41,24 @@ nav {
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  width: 100%;
 }
 
 .nav-item {
-  padding: 20px;
+  padding: 10px;
 }
 
 .hidden{
   display: none;
 }
 
-h6 {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+h1 {
+  color: red;
+  text-align: left;
+}
+
+h4, h6{
+  text-align: center;
 }
 
 .footer-ul {
