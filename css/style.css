@@ -24,6 +24,9 @@ html {
   align-items: center;
   justify-content: center;
 }
+nav {
+  background-color: black;
+}
 
 #navbar {
   display: flex;
@@ -38,26 +41,25 @@ html {
   justify-content: center;
 }
 
+.nav-item {
+  padding: 20px;
+}
+
 .hidden{
   display: none;
 }
 
-
-footer{
-    background-color: rgb(103, 145, 235);
+h6 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+
 .footer-ul {
   list-style-type: none;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-}
-
-.social-icons {
-  list-style-type: none;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
+  padding: 20px;
 }
