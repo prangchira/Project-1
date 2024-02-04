@@ -1,7 +1,5 @@
-html {
-  margin: 0 8%;
-  background-color:rgb(96, 96, 96);
-  
+body {
+  font-family: 'Bebas Neue', sans-serif;
 }
 
 /* Navigation bar */
@@ -10,11 +8,31 @@ nav {
 }
 
 .navbar-brand{
-  font-size: 25px;
+  font-size: 70px;
+  justify-content: center;
+  align-items: center;
+  color: red;
+  padding: 10px;
+}
+
+.navbar-brand:hover {
+  color: red;
 }
 
 .nav-item {
   padding: 10px;
+  font-size: 25px;
+}
+
+.navbarSearch{
+  justify-content: right;
+  padding: 10px;
+  margin-right: 10px;
+}
+
+.form-control:focus {
+  border-color:red !important;
+  box-shadow: 0 0 5px rgb(255, 0, 0) !important;
 }
 
 /* Hero section for user input */
