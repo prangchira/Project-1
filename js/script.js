@@ -16,7 +16,6 @@ $("#search-button").on('click', function(event){
   searchForMealAndMovies() // start new search when user clicks the search button
 })
 
-
 // Variable Declarations
 
 // - API Calling
@@ -155,6 +154,3 @@ init()
 function init() {
   console.log("Javascript reference ok")
 }
-
-
-searchMovieAPI("spiderman")
