@@ -66,9 +66,13 @@ margin-left :-10px;
  
 
 /* Footer section */
+.footer-container{
+  background-color: black;
+}
+
 h6{
   text-align: center;
-  padding: 10px;
+  color: red;
 }
 
 
@@ -81,15 +85,21 @@ h6{
 }
 
 .footer-item {
-    color: white;
+    color: red;
 }
 
+.footer-container a {
+  box-shadow: none; /* Start with no shadow */
+  transition: box-shadow 0.3s ease-in-out; /* Add a smooth transition */
+}
+
+.footer-container a:hover {
+  box-shadow: 0 0 10px red; /* Apply the red shadow effect on hover */
+}
+
+/* media queries */
 @media (max-width: 768px) {
   .navbar-brand {
     font-size: 30px;
-  }
-
-  #navbar-toggle{
-    justify-content: end!important;
   }
 }
