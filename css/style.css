@@ -1,5 +1,6 @@
 body {
   font-family: 'Bebas Neue', sans-serif;
+  position:relative
 }
 
 /* Navigation bar */
@@ -9,25 +10,12 @@ nav {
 
 .navbar-brand{
   font-size: 70px;
-  justify-content: center;
-  align-items: center;
   color: red;
   padding: 10px;
 }
 
 .navbar-brand:hover {
   color: red;
-}
-
-.nav-item {
-  padding: 10px;
-  font-size: 25px;
-}
-
-.navbarSearch{
-  justify-content: right;
-  padding: 10px;
-  margin-right: 10px;
 }
 
 .form-control:focus {
@@ -73,4 +61,14 @@ h6{
 
 .footer-item {
     color: white;
+}
+
+@media (max-width: 768px) {
+  .navbar-brand {
+    font-size: 30px;
+  }
+
+  #navbar-toggle{
+    justify-content: end!important;
+  }
 }
