@@ -34,16 +34,37 @@ nav {
   background-size: cover;
 }
 
+
 /* User result section */
 .hidden{
-  display: none;
+  display: none !important;
 }
+.card-img-top {
+  width: 100% ;
+  height: 65% ;
+  margin: 0 0;
+  top : 50% ;
+  border-radius: 10px;
+}
+ .card {
+  border:none
+ }
+.btn-next {
+margin-left :-10px;
+}
+.card-text {
+  margin-bottom: 0px;
+}
+
+
+ 
 
 /* Footer section */
 h6{
   text-align: center;
   padding: 10px;
 }
+
 
 .footer-ul {
   list-style-type: none;
