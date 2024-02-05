@@ -149,7 +149,6 @@ function displayResultsFromMovieAPI() {}
 
 
 
-
 // TEST code
 
 init()
@@ -158,3 +157,4 @@ function init() {
 }
 
 
+searchMovieAPI("spiderman")
