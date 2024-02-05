@@ -58,15 +58,29 @@ nav {
   background-size: cover;
 }
 
-h4{
-  color: whitesmoke;
-  text-align: center;
-}
-
 /* User result section */
 .hidden{
-  display: none;
+  display: none !important;
 }
+.card-img-top {
+  width: 100% ;
+  height: 65% ;
+  margin: 0 0;
+  top : 50% ;
+  border-radius: 10px;
+}
+ .card {
+  border:none
+ }
+.btn-next {
+margin-left :-10px;
+}
+.card-text {
+  margin-bottom: 0px;
+}
+
+
+ 
 
 /* Footer section */
 .footer-container {
@@ -78,6 +92,7 @@ h6{
   color: red;
   margin:20px;
 }
+
 
 .footer-ul {
   list-style-type: none;
