@@ -220,16 +220,20 @@ async function searchFoodAPI() {
   
   // build API query for Movies
   // console.log(`Food Name 1 `+ foodDetails.Meal);
-  var queryString = {
-       Title : foodDetails.Meal.split(' ')[0],
-       Area : foodDetails.Area,
-       Ingredients : foodDetails.Ingredients,
+      
+  
+  var queryString = [
+       foodDetails.Meal.split(' ')[0], // remove spaces and first word of phrase
+       foodDetails.Area,
+  ]
+  var IngredientsArray = foodDetails.Ingredients;
+  for (var i = 0; i< IngredientsArray.length; i++) {
+      queryString.push(IngredientsArray[i]);
   }
-   // remove spaces
   
   console.log(`========= QUERY AS OBJECT ==============`);
   console.log(`New Query `+ JSON.stringify(queryString));
-  console.log(`Ingredients[0] `+ JSON.stringify(queryString.Ingredients[0]));
+  console.log(`Lenght `+ queryString.lenght);
 
   var queryURL2= apiURL_Movie + "?query=" + queryString.Title + "&api_key=" + apiKey_Movie
   console.log("Movie queryURL = " + queryURL2)
