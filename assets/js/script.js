@@ -391,8 +391,20 @@ function displayResultsFromMovieAPI() {
   // display the first Movie in the list onto the WebPage
       
   // eg. 
-  // webpage element = moviesList[0].Title
-  // webpage element = moviesList[0].release_date 
+  
+  // $('#movieText').text(moviesList[0].Title);
+
+  $('#movieText').text(moviesList[0].Title);
+  $('#resultsPage').removeClass('hidden');
+  var fullimageURL = `https://image.tmdb.org/t/p/w500/${moviesList[0].PosterPath}`
+  console.log(fullimageURL);
+  $('#movieImage').attr('src', fullimageURL);
+  $('#searchPage').addClass('hidden');
+
+  $('#foodText').text(foodDetails.Meal)
+  $('#foodImage').attr("src", foodDetails.MealThumb );
+  $('#foodImage').attr("alt", "Thumbnail of " + foodDetails.Meal);
+  // webpage element = moviesList[0].PosterPath 
   // etc.
 
 }
