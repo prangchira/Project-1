@@ -60,7 +60,8 @@ var movieDetails = {
 var moviesList = []         // an array of movies returned from the Movie API
 
 // MAIN LOGIC 
-
+// Kazim
+searchForMealAndMovies()
 // Do Search - called when the user clicks on the "Search" button
 function searchForMealAndMovies() {
 
@@ -152,6 +153,9 @@ function getUserInputAndValidate() {
   // get user input from the webpage
   userInput_NameOfMeal  = $("#search-input").val().trim().split(' ').join('_')
   
+  // Kazim
+  userInput_NameOfMeal  = `spaghetti`
+  
   // if the user has not entered anything at all, display an error message (eg. "please enter a meal")
   if (userInput_NameOfMeal === "") {
       alert("Please enter the name of a Meal")   // **** WE NEED TO REPLACE THIS, BECAUSE WE ARE NOT SUPPOSSED TO USE ALERTS 
@@ -208,7 +212,7 @@ async function searchFoodAPI() {
           if (data.meals[0].strIngredient9 != "") {foodDetails.Ingredients.push(data.meals[0].strIngredient9)}
           if (data.meals[0].strIngredient10 != "") {foodDetails.Ingredients.push(data.meals[0].strIngredient10)}
 
-          console.log(`Food Details: ${foodDetails}`)
+          //console.log(`Food Details:` + foodDetails.Meal);
 
       } 
 
@@ -216,10 +220,18 @@ async function searchFoodAPI() {
   
   // build API query for Movies
   // console.log(`Food Name 1 `+ foodDetails.Meal);
-  var queryString = foodDetails.Meal.split(' ')[0]; // remove spaces
-  // console.log(`Food Name 2 `+ queryString);
+  var queryString = {
+       Title : foodDetails.Meal.split(' ')[0],
+       Area : foodDetails.Area,
+       Ingredients : foodDetails.Ingredients,
+  }
+   // remove spaces
+  
+  console.log(`========= QUERY AS OBJECT ==============`);
+  console.log(`New Query `+ JSON.stringify(queryString));
+  console.log(`Ingredients[0] `+ JSON.stringify(queryString.Ingredients[0]));
 
-  var queryURL2= apiURL_Movie + "?query=" + queryString + "&api_key=" + apiKey_Movie
+  var queryURL2= apiURL_Movie + "?query=" + queryString.Title + "&api_key=" + apiKey_Movie
   console.log("Movie queryURL = " + queryURL2)
 
   // run API query
