@@ -71,9 +71,12 @@ h4 {
   height: 65% ;
   margin: 0 0;
   top : 50% ;
+  /* border-radius: 20px; */
+
 }
  .card {
-  border:none
+  border:none;
+  border-radius: 25px;
  }
 
 .btn-next {
