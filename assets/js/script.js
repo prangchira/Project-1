@@ -6,6 +6,17 @@
     This code handles logic for the "Movies for Munchies" application
 
 */
+// Query selectors
+
+  //Nav bar
+  var searchBtn = document.querySelector(".searchButton");
+  var homeBtn = document.querySelector(".home");
+
+  //User input section
+  var mealInput = document.querySelector(".input-meal2");
+  var searchMealBtn = document.querySelector("#meal-search");
+  //Results section
+  var resultsPage = document.querySelector('.hero-bg-image');
 
 
 // Event Listeners
@@ -60,8 +71,7 @@ var movieDetails = {
 var moviesList = []         // an array of movies returned from the Movie API
 
 // MAIN LOGIC 
-// Kazim
-searchForMealAndMovies()
+
 // Do Search - called when the user clicks on the "Search" button
 function searchForMealAndMovies() {
 
@@ -152,10 +162,7 @@ function getUserInputAndValidate() {
 
   // get user input from the webpage
   userInput_NameOfMeal  = $("#search-input").val().trim().split(' ').join('_')
-  
-  // Kazim
-  // userInput_NameOfMeal  = `spaghetti`
-  
+   
   // if the user has not entered anything at all, display an error message (eg. "please enter a meal")
   if (userInput_NameOfMeal === "") {
       alert("Please enter the name of a Meal")   // **** WE NEED TO REPLACE THIS, BECAUSE WE ARE NOT SUPPOSSED TO USE ALERTS 
@@ -231,7 +238,7 @@ async function searchFoodAPI() {
       queryString.push(IngredientsArray[i]);
   }
   
-  console.log(`========= QUERY AS OBJECT ==============`);
+  console.log(`========= QUERY AS AN ARRAY ==============`);
   console.log(`New Query `+ JSON.stringify(queryString));
   console.log(`Lenght `+ queryString.lenght);
 
