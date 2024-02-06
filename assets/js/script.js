@@ -150,8 +150,8 @@ function initialiseVariables() {
 function getUserInputAndValidate() {
 
   // get user input from the webpage
-  userInput_NameOfMeal  = $("#search-input").val().trim()
-
+  userInput_NameOfMeal  = $("#search-input").val().trim().split(' ').join('_')
+  
   // if the user has not entered anything at all, display an error message (eg. "please enter a meal")
   if (userInput_NameOfMeal === "") {
       alert("Please enter the name of a Meal")   // **** WE NEED TO REPLACE THIS, BECAUSE WE ARE NOT SUPPOSSED TO USE ALERTS 
@@ -171,7 +171,7 @@ function resetScreen() {
 
 // Search "Food API" for the Meal that user entered and Populate food API variables with results
 async function searchFoodAPI() {
-
+  
   // build API query for Food
   var queryURL = apiURL_Food + "?s=" + userInput_NameOfMeal
   console.log("Food queryURL = " + queryURL)
