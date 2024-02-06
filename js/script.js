@@ -8,6 +8,11 @@
 */
 
 
+// Query selectors
+var searchButton = document.querySelector("#meal-search");
+var 
+
+
 // Event Listeners
 
 // - "Search" button "click" event
@@ -25,6 +30,7 @@ var apiURL_TheMovieDB = "https://api.themoviedb.org/3/search/movie"
 
 var apiKey_Food = "......"    
 var apiKey_TheMovieDB  = "b72e96c54ea2a07a5e26896ddd3161a7"    
+
 
 
 // notes : 
