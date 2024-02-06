@@ -18,6 +18,7 @@
   var mealInput = document.querySelector(".input-meal2");
   var searchMealBtn = document.querySelector("#meal-search");
   //Results section
+  var resultsPage = document.querySelector('.hero-bg-image');
 
   //Footer
 
@@ -27,6 +28,7 @@
 // - "Search" button "click" event
 searchMealBtn.onclick = function(){
   console.log("Starting Search")
+  displayResultsFromFoodAPI()
   getUserInputAndValidate()
   searchForMealAndMovies() // start new search when user clicks the search button
 }
@@ -92,7 +94,8 @@ function searchForMealAndMovies() {
 
   // Get User Input, Validate User Input and Populate userInput_NameOfMeal variable
   getUserInputAndValidate()
-    
+    // EDIT: This has been covered by the automatic HTML validator https://www.w3schools.com/js/js_validation.asp
+
 
   // Reset screen (clear any existing search results) 
   resetScreen()
@@ -130,8 +133,8 @@ function searchForMealAndMovies() {
 // Get User Input, Validate User Input and Populate Variable
 function getUserInputAndValidate() {
   // get user input from the webpage
-
   // if the user has not entered anything at all, display an error message (eg. "please enter a meal") 
+    // EDIT: This has been covered by the automatic HTML validator https://www.w3schools.com/js/js_validation.asp
 
 }
 
@@ -151,6 +154,7 @@ function searchFoodAPI() {
 // If the "Food API" returned No Data, let the user know 
 function validateFoodAPIData() {
   // if the variable foodDetails contains no values, let the user know (display message on webpage)
+  // EDIT: This has been covered by the automatic HTML validator https://www.w3schools.com/js/js_validation.asp
 }
 
 // Display the results from the "Food API" (update screen using foodAPI variables)

@@ -71,18 +71,18 @@ h4 {
   height: 65% ;
   margin: 0 0;
   top : 50% ;
-  border-radius: 10px;
 }
  .card {
   border:none
  }
+
 .btn-next {
-margin-left :-10px;
+margin: auto;
 }
+
 .card-text {
   margin-bottom: 0px;
 }
-
 
 /* Footer section */
 .footer-container {
