@@ -1,6 +1,6 @@
 body {
   font-family: 'Bebas Neue', sans-serif;
-  position:relative
+  background-color: black;
 }
 
 /* Navigation bar */
@@ -23,6 +23,24 @@ nav {
   box-shadow: 0 0 5px rgb(255, 0, 0) !important;
 }
 
+.nav-link {
+  color: red;
+  margin: 20px
+}
+.nav-link:hover {
+  color: red;
+  box-shadow: 0 0 10px red;
+}
+
+.search-button {
+  margin: 20px;
+}
+
+.search-input {
+  height:40px;
+  width: 200px;
+}
+
 /* Hero section for user input */
 .hero-bg-image {
   min-height: 500px;
@@ -39,7 +57,6 @@ nav {
   background-position: center;
   background-size: cover;
 }
-
 
 /* User result section */
 .hidden{
@@ -66,13 +83,14 @@ margin-left :-10px;
  
 
 /* Footer section */
-.footer-container{
+.footer-container {
   background-color: black;
 }
 
 h6{
   text-align: center;
   color: red;
+  margin:20px;
 }
 
 
@@ -94,6 +112,7 @@ h6{
 }
 
 .footer-container a:hover {
+  color: red;
   box-shadow: 0 0 10px red; /* Apply the red shadow effect on hover */
 }
 
