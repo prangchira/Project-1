@@ -45,7 +45,7 @@
     </header>
 
     <!-- Search section -->
-    <section class="hero-bg-image">
+    <section id="searchPage" class="hero-bg-image">
         <h4> You’ve cooked a lovely meal and now you’re stuck for something to watch? <br> 
          Enter your meal below and we will pair your meal with a film</h4>
         <form class="row g-4">
@@ -60,19 +60,18 @@
     </section>
 
     <!-- Result section -->
-    <section class="hidden d-flex justify-content-around mt-5">
+    <section id="resultsPage" class="hidden d-flex justify-content-around mt-5">
       <div class="card" style="width: 18rem;">
-        <img src="images/foodPlaceholder1.jpg" class="card-img-top" alt="dish of food">
+        <img id="foodImage" src="images/foodPlaceholder1.jpg" class="card-img-top" alt="dish of food">
         <div class="card-body">
-          <p class="card-text mt-3">The name of the recipe the use input</p>
+          <p id="foodText" class="card-text mt-3">The name of the recipe the use input</p>
         </div>
       </div>
       <div class="card" style="width: 18rem;">
-        <img src="images/filmPlaceholder.jpg" class="card-img-top" alt="spider man">
+        <img id = "movieImage" src="images/filmPlaceholder.jpg" class="card-img-top" alt="spider man">
         <div class="card-body">
-          <p class="card-text mt-3">Name of the movie</p>
+          <p id="movieText" class="card-text mt-3">Name of the movie</p>
           <button class="btn btn-next btn-danger text-dark mt-3">Next Film</button>
-          
         </div>
       </div>
     </section>
