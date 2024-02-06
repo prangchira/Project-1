@@ -106,7 +106,7 @@ function searchForMealAndMovies() {
      // searchMovieAPI(foodDetails.Meal)
 
   // Display the results from the "Movie API" (update screen using movieList variables)
-  displayResultsFromMovieAPI()
+  //displayResultsFromMovieAPI()
 
 
 }
@@ -215,9 +215,9 @@ async function searchFoodAPI() {
   }) // end of Food API fetch
   
   // build API query for Movies
-  console.log(`Food Name 1 `+ foodDetails.Meal);
+  // console.log(`Food Name 1 `+ foodDetails.Meal);
   var queryString = foodDetails.Meal.split(' ')[0]; // remove spaces
-  console.log(`Food Name 2 `+ queryString);
+  // console.log(`Food Name 2 `+ queryString);
 
   var queryURL2= apiURL_Movie + "?query=" + queryString + "&api_key=" + apiKey_Movie
   console.log("Movie queryURL = " + queryURL2)
@@ -262,15 +262,13 @@ async function searchFoodAPI() {
           }
 
       }
-      console.log(moviesList)
 
       // sort the movies List by Popularity (descending order)
       moviesList.sort((a,b) => b.Popularity - a.Popularity)
 
 
     }) // end of Movie API fetch
-    
-    console.log(moviesList)
+    displayResultsFromMovieAPI();
 }
 
 
