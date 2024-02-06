@@ -6,6 +6,17 @@
     This code handles logic for the "Movies for Munchies" application
 
 */
+// Query selectors
+
+  //Nav bar
+  var searchBtn = document.querySelector(".searchButton");
+  var homeBtn = document.querySelector(".home");
+
+  //User input section
+  var mealInput = document.querySelector(".input-meal2");
+  var searchMealBtn = document.querySelector("#meal-search");
+  //Results section
+  var resultsPage = document.querySelector('.hero-bg-image');
 
 
 // Event Listeners
