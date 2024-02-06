@@ -58,6 +58,10 @@ nav {
   background-size: cover;
 }
 
+h4 {
+  color: whitesmoke;
+}
+
 /* User result section */
 .hidden{
   display: none !important;
@@ -68,20 +72,20 @@ nav {
   margin: 0 0;
   top : 50% ;
   /* border-radius: 20px; */
+
 }
  .card {
   border:none;
   border-radius: 25px;
  }
+
 .btn-next {
-margin-left :-10px;
+margin: auto;
 }
+
 .card-text {
   margin-bottom: 0px;
 }
-
-
- 
 
 /* Footer section */
 .footer-container {

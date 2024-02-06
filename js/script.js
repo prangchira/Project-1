@@ -8,13 +8,33 @@
 */
 
 
+// Query selectors
+
+  //Nav bar
+  var searchBtn = document.querySelector(".searchButton");
+  var homeBtn = document.querySelector(".home");
+
+  //User input section
+  var mealInput = document.querySelector(".input-meal2");
+  var searchMealBtn = document.querySelector("#meal-search");
+  //Results section
+  var resultsPage = document.querySelector('.hero-bg-image');
+
+  //Footer
+
+
 // Event Listeners
 
 // - "Search" button "click" event
-$("#search-button").on('click', function(event){
+searchMealBtn.onclick = function(){
   console.log("Starting Search")
   searchForMealAndMovies() // start new search when user clicks the search button
-})
+}
+
+// $("#search-button").on('click', function(event){
+//   console.log("Starting Search")
+//   searchForMealAndMovies() // start new search when user clicks the search button
+// })
 
 
 // Variable Declarations
@@ -25,6 +45,7 @@ var apiURL_TheMovieDB = "https://api.themoviedb.org/3/search/movie"
 
 var apiKey_Food = "......"    
 var apiKey_TheMovieDB  = "b72e96c54ea2a07a5e26896ddd3161a7"    
+
 
 
 // notes : 
@@ -51,7 +72,7 @@ var movieDetails = {
   Title : "",             
   Genre : "",
   Actors : [],    
-  movieImage 
+  movieImage
   //etc....
   }
 var moviesList = []
@@ -71,6 +92,8 @@ function searchForMealAndMovies() {
 
   // Get User Input, Validate User Input and Populate userInput_NameOfMeal variable
   getUserInputAndValidate()
+    // EDIT: This has been covered by the automatic HTML validator https://www.w3schools.com/js/js_validation.asp
+
 
   // Reset screen (clear any existing search results) 
   resetScreen()
@@ -87,7 +110,6 @@ function searchForMealAndMovies() {
 
   // Display the results from the "Food API" (update screen using foodAPI variables)
   displayResultsFromFoodAPI()
-
 
   // (2) Get information from "Movie API"
   // ------------------------------------
@@ -108,8 +130,8 @@ function searchForMealAndMovies() {
 // Get User Input, Validate User Input and Populate Variable
 function getUserInputAndValidate() {
   // get user input from the webpage
-
-  // if the user has not entered anything at all, display an error message (eg. "please enter a meal")
+  // if the user has not entered anything at all, display an error message (eg. "please enter a meal") 
+    // EDIT: This has been covered by the automatic HTML validator https://www.w3schools.com/js/js_validation.asp
 
 }
 
@@ -129,6 +151,7 @@ function searchFoodAPI() {
 // If the "Food API" returned No Data, let the user know 
 function validateFoodAPIData() {
   // if the variable foodDetails contains no values, let the user know (display message on webpage)
+  // EDIT: This has been covered by the automatic HTML validator https://www.w3schools.com/js/js_validation.asp
 }
 
 // Display the results from the "Food API" (update screen using foodAPI variables)
