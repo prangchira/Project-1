@@ -18,7 +18,7 @@
   //Results section
   var resultsPage = document.querySelector('.hero-bg-image');
 
-
+var movieIndex = 0
 // Event Listeners
 
 // - "Search" button "click" event
@@ -27,6 +27,18 @@ $("#search-btn").on('click', function(event){
   event.preventDefault()
   console.log("**** Starting New Search ****")
   searchForMealAndMovies() 
+})
+$("#next-btn").on('click', function(event){
+  // start a move next when the user clicks on the next button
+  event.preventDefault()
+  console.log("**** move next ****")
+  viewNext() 
+})
+$("#previous-btn").on('click', function(event){
+  // start a go back when the user clicks on the previous button
+  event.preventDefault()
+  console.log("**** go back ****")
+  viewPrevious() 
 })
 
 
@@ -416,3 +428,22 @@ init()  // this should run when index.html opens
 function init() {
   console.log("HTML reference to Javascript is ok")
 }
+function viewNext() {
+  if (movieIndex < moviesList.length) {
+    movieIndex = movieIndex + 1
+  }
+
+  var fullimageURL = `https://image.tmdb.org/t/p/w500/${moviesList[movieIndex].PosterPath}`
+  console.log(fullimageURL);
+  $('#movieImage').attr("src", fullimageURL);
+}
+function viewPrevious() {
+  if (movieIndex > 0) {
+    movieIndex = movieIndex - 1
+  }
+  
+  
+  var fullimageURL = `https://image.tmdb.org/t/p/w500/${moviesList[movieIndex].PosterPath}`
+  console.log(fullimageURL);
+  $('#movieImage').attr("src", fullimageURL);
+} 
