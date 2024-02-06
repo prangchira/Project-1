@@ -154,7 +154,7 @@ function getUserInputAndValidate() {
   userInput_NameOfMeal  = $("#search-input").val().trim().split(' ').join('_')
   
   // Kazim
-  userInput_NameOfMeal  = `spaghetti`
+  // userInput_NameOfMeal  = `spaghetti`
   
   // if the user has not entered anything at all, display an error message (eg. "please enter a meal")
   if (userInput_NameOfMeal === "") {
@@ -235,9 +235,8 @@ async function searchFoodAPI() {
   console.log(`New Query `+ JSON.stringify(queryString));
   console.log(`Lenght `+ queryString.lenght);
 
-  var queryURL2= apiURL_Movie + "?query=" + queryString.Title + "&api_key=" + apiKey_Movie
+  var queryURL2= apiURL_Movie + "?query=" + queryString[0] + "&api_key=" + apiKey_Movie
   console.log("Movie queryURL = " + queryURL2)
-
   // run API query
   await fetch(queryURL2).then(function (response2) {
       return response2.json()
