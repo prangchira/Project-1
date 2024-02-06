@@ -9,17 +9,32 @@
 
 
 // Query selectors
-var searchButton = document.querySelector("#meal-search");
-var 
+
+  //Nav bar
+  var searchBtn = document.querySelector(".searchButton");
+  var homeBtn = document.querySelector(".home");
+
+  //User input section
+  var mealInput = document.querySelector(".input-meal2");
+  var searchMealBtn = document.querySelector("#meal-search");
+  //Results section
+
+  //Footer
 
 
 // Event Listeners
 
 // - "Search" button "click" event
-$("#search-button").on('click', function(event){
+searchMealBtn.onclick = function(){
   console.log("Starting Search")
+  getUserInputAndValidate()
   searchForMealAndMovies() // start new search when user clicks the search button
-})
+}
+
+// $("#search-button").on('click', function(event){
+//   console.log("Starting Search")
+//   searchForMealAndMovies() // start new search when user clicks the search button
+// })
 
 
 // Variable Declarations
@@ -57,7 +72,7 @@ var movieDetails = {
   Title : "",             
   Genre : "",
   Actors : [],    
-  movieImage 
+  movieImage
   //etc....
   }
 var moviesList = []
@@ -77,6 +92,7 @@ function searchForMealAndMovies() {
 
   // Get User Input, Validate User Input and Populate userInput_NameOfMeal variable
   getUserInputAndValidate()
+    
 
   // Reset screen (clear any existing search results) 
   resetScreen()
@@ -115,7 +131,7 @@ function searchForMealAndMovies() {
 function getUserInputAndValidate() {
   // get user input from the webpage
 
-  // if the user has not entered anything at all, display an error message (eg. "please enter a meal")
+  // if the user has not entered anything at all, display an error message (eg. "please enter a meal") 
 
 }
 
