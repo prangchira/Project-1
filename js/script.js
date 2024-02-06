@@ -28,8 +28,6 @@
 // - "Search" button "click" event
 searchMealBtn.onclick = function(){
   console.log("Starting Search")
-  displayResultsFromFoodAPI()
-  getUserInputAndValidate()
   searchForMealAndMovies() // start new search when user clicks the search button
 }
 
@@ -112,7 +110,6 @@ function searchForMealAndMovies() {
 
   // Display the results from the "Food API" (update screen using foodAPI variables)
   displayResultsFromFoodAPI()
-
 
   // (2) Get information from "Movie API"
   // ------------------------------------
