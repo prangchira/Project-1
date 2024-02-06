@@ -58,6 +58,10 @@ nav {
   background-size: cover;
 }
 
+h4 {
+  color: whitesmoke;
+}
+
 /* User result section */
 .hidden{
   display: none !important;
@@ -79,8 +83,6 @@ margin-left :-10px;
   margin-bottom: 0px;
 }
 
-
- 
 
 /* Footer section */
 .footer-container {
