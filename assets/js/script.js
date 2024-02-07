@@ -28,6 +28,7 @@ $("#search-btn").on('click', function(event){
   console.log("**** Starting New Search ****")
   searchForMealAndMovies() 
 })
+
 $("#next-btn").on('click', function(event){
   // start a move next when the user clicks on the next button
   event.preventDefault()
@@ -250,11 +251,16 @@ async function searchFoodAPI() {
       queryString.push(IngredientsArray[i]);
   }
   
+  // Select query word by creating a random index number from 0 to array lenght
+  // That makes the result different if it calls same meal name
+  var randomIndex = randomNum(0, IngredientsArray.length);
   console.log(`========= QUERY AS AN ARRAY ==============`);
-  console.log(`New Query `+ JSON.stringify(queryString));
-  console.log(`Lenght `+ queryString.lenght);
+  console.log(`Query Array : `+ JSON.stringify(queryString));
+  console.log(`Query index is :` + randomIndex + ` and the query is `+ queryString[randomIndex]);
+  // console.log(`Lenght `+ queryString.lenght);
 
-  var queryURL2= apiURL_Movie + "?query=" + queryString[0] + "&api_key=" + apiKey_Movie
+  // Query URL due to selection of query 
+  var queryURL2= apiURL_Movie + "?query=" + queryString[randomIndex].split(' ')[0] + "&api_key=" + apiKey_Movie
   console.log("Movie queryURL = " + queryURL2)
   // run API query
   await fetch(queryURL2).then(function (response2) {
@@ -325,8 +331,6 @@ function displayResultsFromFoodAPI() {
   // webpage element = foodDetails.Meal
   // webpage element = foodDetails.MealThumb 
   // etc.
-
-
 
 }
 
@@ -408,8 +412,13 @@ function displayResultsFromMovieAPI() {
 
   $('#movieText').text(moviesList[0].Title);
   $('#resultsPage').removeClass('hidden');
+  if (moviesList[0].PosterPath) {
   var fullimageURL = `https://image.tmdb.org/t/p/w500/${moviesList[0].PosterPath}`
   console.log(fullimageURL);
+  } else {
+  var fullimageURL = `./assets/Img/no-image.jpg`;
+  console.log(fullimageURL);
+  }
   $('#movieImage').attr('src', fullimageURL);
   $('#searchPage').addClass('hidden');
 
@@ -428,22 +437,39 @@ init()  // this should run when index.html opens
 function init() {
   console.log("HTML reference to Javascript is ok")
 }
+
 function viewNext() {
   if (movieIndex < moviesList.length) {
     movieIndex = movieIndex + 1
   }
-
+  $('#movieText').text(moviesList[movieIndex].Title);
+  if (moviesList[movieIndex].PosterPath) {
   var fullimageURL = `https://image.tmdb.org/t/p/w500/${moviesList[movieIndex].PosterPath}`
   console.log(fullimageURL);
+  } else {
+    var fullimageURL = `./assets/Img/no-image.jpg`;
+    console.log(fullimageURL);
+  }
+
   $('#movieImage').attr("src", fullimageURL);
 }
 function viewPrevious() {
   if (movieIndex > 0) {
     movieIndex = movieIndex - 1
-  }
-  
-  
+  }  
+  $('#movieText').text(moviesList[movieIndex].Title);
+  if (moviesList[movieIndex].PosterPath) {
   var fullimageURL = `https://image.tmdb.org/t/p/w500/${moviesList[movieIndex].PosterPath}`
   console.log(fullimageURL);
+  } else {
+    var fullimageURL = `./assets/Img/no-image.jpg`;
+    console.log(fullimageURL);
+  }
   $('#movieImage').attr("src", fullimageURL);
 } 
+
+function randomNum(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1) + min);
+}
