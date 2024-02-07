@@ -6,19 +6,8 @@
     This code handles logic for the "Movies for Munchies" application
 
 */
-// Query selectors
 
-  //Nav bar
-  var searchBtn = document.querySelector(".searchButton");
-  var homeBtn = document.querySelector(".home");
 
-  //User input section
-  var mealInput = document.querySelector(".input-meal2");
-  var searchMealBtn = document.querySelector("#meal-search");
-  //Results section
-  var resultsPage = document.querySelector('.hero-bg-image');
-
-var movieIndex = 0
 // Event Listeners
 
 // - "Search" button "click" event
@@ -82,6 +71,8 @@ var movieDetails = {
   }
 
 var moviesList = []         // an array of movies returned from the Movie API
+var movieIndex = 0
+
 
 // MAIN LOGIC 
 
@@ -193,6 +184,7 @@ function resetScreen() {
 }
 
 
+
 // Search "Food API" for the Meal that user entered and Populate food API variables with results
 async function searchFoodAPI() {
   
@@ -244,13 +236,38 @@ async function searchFoodAPI() {
   
   var queryString = [
        foodDetails.Meal.split(' ')[0], // remove spaces and first word of phrase
-       foodDetails.Area,
+      // foodDetails.Area,
   ]
   var IngredientsArray = foodDetails.Ingredients;
   for (var i = 0; i< IngredientsArray.length; i++) {
       queryString.push(IngredientsArray[i]);
   }
   
+  function findJapanese(value) {
+    return value === `Japanese`;
+  }
+  function removeItemAll(arr, value) {
+    var i = 0;
+    while (i < arr.length) {
+      if (arr[i] === value) {
+        arr.splice(i, 1);
+      } else {
+        ++i;
+      }
+    }
+    return arr;
+  }
+  if (queryString.find(findJapanese)){
+    console.log(`Japanese found`)
+    removeItemAll(queryString, `Japanese`);
+  } else {
+    console.log(`Not found`)
+  }
+  console.log(`Final Query Array : ` + queryString)
+
+
+
+
   // Select query word by creating a random index number from 0 to array lenght
   // That makes the result different if it calls same meal name
   var randomIndex = randomNum(0, IngredientsArray.length);
@@ -275,7 +292,7 @@ async function searchFoodAPI() {
       else {
           console.log("Movies Found by API")
       }
-
+      console.log(JSON.stringify(data2))
       // For each movie returned by the Movie API
       for (i=0; i< data2.results.length; i++) {
 
