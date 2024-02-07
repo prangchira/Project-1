@@ -236,13 +236,38 @@ async function searchFoodAPI() {
   
   var queryString = [
        foodDetails.Meal.split(' ')[0], // remove spaces and first word of phrase
-       foodDetails.Area,
+      // foodDetails.Area,
   ]
   var IngredientsArray = foodDetails.Ingredients;
   for (var i = 0; i< IngredientsArray.length; i++) {
       queryString.push(IngredientsArray[i]);
   }
   
+  function findJapanese(value) {
+    return value === `Japanese`;
+  }
+  function removeItemAll(arr, value) {
+    var i = 0;
+    while (i < arr.length) {
+      if (arr[i] === value) {
+        arr.splice(i, 1);
+      } else {
+        ++i;
+      }
+    }
+    return arr;
+  }
+  if (queryString.find(findJapanese)){
+    console.log(`Japanese found`)
+    removeItemAll(queryString, `Japanese`);
+  } else {
+    console.log(`Not found`)
+  }
+  console.log(`Final Query Array : ` + queryString)
+
+
+
+
   // Select query word by creating a random index number from 0 to array lenght
   // That makes the result different if it calls same meal name
   var randomIndex = randomNum(0, IngredientsArray.length);
@@ -267,7 +292,7 @@ async function searchFoodAPI() {
       else {
           console.log("Movies Found by API")
       }
-
+      console.log(JSON.stringify(data2))
       // For each movie returned by the Movie API
       for (i=0; i< data2.results.length; i++) {
 
