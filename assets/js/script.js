@@ -6,19 +6,8 @@
     This code handles logic for the "Movies for Munchies" application
 
 */
-// Query selectors
 
-  //Nav bar
-  var searchBtn = document.querySelector(".searchButton");
-  var homeBtn = document.querySelector(".home");
 
-  //User input section
-  var mealInput = document.querySelector(".input-meal2");
-  var searchMealBtn = document.querySelector("#meal-search");
-  //Results section
-  var resultsPage = document.querySelector('.hero-bg-image');
-
-var movieIndex = 0
 // Event Listeners
 
 // - "Search" button "click" event
@@ -82,6 +71,8 @@ var movieDetails = {
   }
 
 var moviesList = []         // an array of movies returned from the Movie API
+var movieIndex = 0
+
 
 // MAIN LOGIC 
 
@@ -191,6 +182,7 @@ function resetScreen() {
   // clear any existing search results (food and movies) from the WebPage
 
 }
+
 
 
 // Search "Food API" for the Meal that user entered and Populate food API variables with results
