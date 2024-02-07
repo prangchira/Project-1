@@ -28,6 +28,7 @@ $("#search-btn").on('click', function(event){
   console.log("**** Starting New Search ****")
   searchForMealAndMovies() 
 })
+
 $("#next-btn").on('click', function(event){
   // start a move next when the user clicks on the next button
   event.preventDefault()
@@ -411,8 +412,13 @@ function displayResultsFromMovieAPI() {
 
   $('#movieText').text(moviesList[0].Title);
   $('#resultsPage').removeClass('hidden');
+  if (moviesList[0].PosterPath) {
   var fullimageURL = `https://image.tmdb.org/t/p/w500/${moviesList[0].PosterPath}`
   console.log(fullimageURL);
+  } else {
+  var fullimageURL = `./assets/Img/no-image.jpg`;
+  console.log(fullimageURL);
+  }
   $('#movieImage').attr('src', fullimageURL);
   $('#searchPage').addClass('hidden');
 
@@ -437,8 +443,14 @@ function viewNext() {
     movieIndex = movieIndex + 1
   }
   $('#movieText').text(moviesList[movieIndex].Title);
+  if (moviesList[movieIndex].PosterPath) {
   var fullimageURL = `https://image.tmdb.org/t/p/w500/${moviesList[movieIndex].PosterPath}`
   console.log(fullimageURL);
+  } else {
+    var fullimageURL = `./assets/Img/no-image.jpg`;
+    console.log(fullimageURL);
+  }
+
   $('#movieImage').attr("src", fullimageURL);
 }
 function viewPrevious() {
@@ -446,8 +458,13 @@ function viewPrevious() {
     movieIndex = movieIndex - 1
   }  
   $('#movieText').text(moviesList[movieIndex].Title);
+  if (moviesList[movieIndex].PosterPath) {
   var fullimageURL = `https://image.tmdb.org/t/p/w500/${moviesList[movieIndex].PosterPath}`
   console.log(fullimageURL);
+  } else {
+    var fullimageURL = `./assets/Img/no-image.jpg`;
+    console.log(fullimageURL);
+  }
   $('#movieImage').attr("src", fullimageURL);
 } 
 
