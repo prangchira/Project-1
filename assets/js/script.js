@@ -12,22 +12,25 @@
 
 // - "Search" button "click" event
 $("#search-btn").on('click', function(event){
-  // start a new search when the user clicks on the search button
+  // start a new search 
   event.preventDefault()
   console.log("**** Starting New Search ****")
   searchForMealAndMovies() 
 })
 
+// - "Next Movie" button "click" event
 $("#next-btn").on('click', function(event){
-  // start a move next when the user clicks on the next button
+  // display the next movie
   event.preventDefault()
-  console.log("**** move next ****")
+  console.log("**** display the next movie ****")
   viewNext() 
 })
+
+// - "Previous Movie" button "click" event
 $("#previous-btn").on('click', function(event){
-  // start a go back when the user clicks on the previous button
+  // display the next movie
   event.preventDefault()
-  console.log("**** go back ****")
+  console.log("**** display the previoous movie ****")
   viewPrevious() 
 })
 
@@ -35,10 +38,11 @@ $("#previous-btn").on('click', function(event){
 // Variable Declarations
 // notes : The following variables are placed here so that they are in scope for all functions
 
-// - API Calling
+// API Calling
 var apiURL_Food = "https://www.themealdb.com/api/json/v1/1/search.php"   
 var apiURL_Movie = "https://api.themoviedb.org/3/search/movie"
 var apiKey_Movie  = "b72e96c54ea2a07a5e26896ddd3161a7"    
+
 
 // USER Input
 var userInput_NameOfMeal = ""
@@ -70,21 +74,16 @@ var movieDetails = {
   ReleaseDate : ""
   }
 
-var moviesList = []         // an array of movies returned from the Movie API
-var movieIndex = 0
+var moviesList = []       // an array of movies returned from the Movie API
+var movieIndex = 0        // index used to select movies from the moviesList
 
 
-// MAIN LOGIC 
+
+// MAIN LOGIC for Search
+// ---------------------
 
 // Do Search - called when the user clicks on the "Search" button
 function searchForMealAndMovies() {
-
-  // Notes : 
-  // By breaking tasks down into individual functions, team members can more easily be assigned to complete them.
-
-
-  // (1) Get User Input and Initialise application
-  // ---------------------------------------------
 
   // Reset variables to their initial values
   initialiseVariables()
@@ -92,43 +91,13 @@ function searchForMealAndMovies() {
   // Get User Input, Validate User Input and Populate the userInput_NameOfMeal variable
   getUserInputAndValidate()
 
-  // Reset screen (clear any existing search results currently displayed on screen) 
-  resetScreen()
-
-
-  // (2) Get information from "Food API"
-  // -----------------------------------
-
-  // Search "Food API" for the Meal that the user entered and Populate foodAPI variables with results
-  
-  searchFoodAPI()
-
-
-
-  // If the "Food API" returned No Data, let the user know and STOP Search
-  validateFoodAPIData()
-
-  // Display the results from the "Food API" (update screen using foodAPI variables)
-  displayResultsFromFoodAPI()
-
-
-  // (2) Get information from "Movie API"
-  // ------------------------------------
-
-  // REPEAT for items of information returned from the "Food API"                   
-  
-      // Search "Movie API" and Populate movieList variables with results
-     // searchMovieAPI(foodDetails.Meal)
-
-  // Display the results from the "Movie API" (update screen using movieList variables)
-  //displayResultsFromMovieAPI()
-
+  // Search API's and Display Results
+  searchAPIs()
 
 }
 
 
-
-// SUPPORTING FUNCTIONS
+// SEARCH FUNCTIONS
 
 
 // Reset variables to their initial values
@@ -169,7 +138,8 @@ function getUserInputAndValidate() {
    
   // if the user has not entered anything at all, display an error message (eg. "please enter a meal")
   if (userInput_NameOfMeal === "") {
-      alert("Please enter the name of a Meal")   // **** WE NEED TO REPLACE THIS, BECAUSE WE ARE NOT SUPPOSSED TO USE ALERTS 
+      // note : a user message is now displayed by the html, rather than by javascript
+      console.log("User entered no search criteria")
   }
   else {
       console.log("User entered '" + userInput_NameOfMeal + "'")
@@ -177,17 +147,13 @@ function getUserInputAndValidate() {
 }
 
 
-// Reset webpage (clear any existing search results)
-function resetScreen() {
-  // clear any existing search results (food and movies) from the WebPage
-
-}
-
-
-
-// Search "Food API" for the Meal that user entered and Populate food API variables with results
-async function searchFoodAPI() {
+// Search API's and Display Results
+async function searchAPIs() {
   
+
+  // Search FOOD API
+  // ---------------
+
   // build API query for Food
   var queryURL = apiURL_Food + "?s=" + userInput_NameOfMeal
   console.log("Food queryURL = " + queryURL)
@@ -224,28 +190,31 @@ async function searchFoodAPI() {
           if (data.meals[0].strIngredient9 != "") {foodDetails.Ingredients.push(data.meals[0].strIngredient9)}
           if (data.meals[0].strIngredient10 != "") {foodDetails.Ingredients.push(data.meals[0].strIngredient10)}
 
-          //console.log(`Food Details:` + foodDetails.Meal);
-
       } 
 
   }) // end of Food API fetch
   
-  // build API query for Movies
-  // console.log(`Food Name 1 `+ foodDetails.Meal);
-      
-  
+
+  // Search MOVIE API
+  // ----------------
+
+  // build API query for Movies  
   var queryString = [
        foodDetails.Meal.split(' ')[0], // remove spaces and first word of phrase
-      // foodDetails.Area,
   ]
+
   var IngredientsArray = foodDetails.Ingredients;
+  
   for (var i = 0; i< IngredientsArray.length; i++) {
       queryString.push(IngredientsArray[i]);
   }
-  
+
+  // Remove Japanese Movies from the API Query
+  // note : our testing found Japanese adult movies which were not labelled as "Adult" by TheMovieDB
   function findJapanese(value) {
     return value === `Japanese`;
   }
+  
   function removeItemAll(arr, value) {
     var i = 0;
     while (i < arr.length) {
@@ -257,24 +226,23 @@ async function searchFoodAPI() {
     }
     return arr;
   }
+
   if (queryString.find(findJapanese)){
     console.log(`Japanese found`)
     removeItemAll(queryString, `Japanese`);
   } else {
     console.log(`Not found`)
   }
+
   console.log(`Final Query Array : ` + queryString)
 
 
-
-
-  // Select query word by creating a random index number from 0 to array lenght
-  // That makes the result different if it calls same meal name
+  // Select a query word by creating a random index number from 0 to array lenght
+  // Note : That makes the result different if it calls same meal name
   var randomIndex = randomNum(0, IngredientsArray.length);
-  console.log(`========= QUERY AS AN ARRAY ==============`);
   console.log(`Query Array : `+ JSON.stringify(queryString));
   console.log(`Query index is :` + randomIndex + ` and the query is `+ queryString[randomIndex]);
-  // console.log(`Lenght `+ queryString.lenght);
+
 
   // Query URL due to selection of query 
   var queryURL2= apiURL_Movie + "?query=" + queryString[randomIndex].split(' ')[0] + "&api_key=" + apiKey_Movie
@@ -287,12 +255,13 @@ async function searchFoodAPI() {
       // Check if a Movies were found
       if (data2.results === null) {
           console.log("Movies NOT Found by API")
-
       }
       else {
           console.log("Movies Found by API")
       }
       console.log(JSON.stringify(data2))
+
+
       // For each movie returned by the Movie API
       for (i=0; i< data2.results.length; i++) {
 
@@ -317,102 +286,26 @@ async function searchFoodAPI() {
               moviesList.push(clone)
 
           }
-
       }
 
-      // sort the movies List by Popularity (descending order)
+      // SORT the movies List by Popularity (descending order)
       moviesList.sort((a,b) => b.Popularity - a.Popularity)
 
-
     }) // end of Movie API fetch
-    displayResultsFromMovieAPI();
+
+
+    // DISPLAY RESULTS OF API CALLS
+    // ----------------------------
+    displayResultsFromAPIs();
 }
 
 
-// If the "Food API" returned No Data, let the user know 
-function validateFoodAPIData() {
-  // if the variable foodDetails contains no values, let the user know 
-  if (foodDetails.Meal === "") {
-      // display user message on webpage 
 
-  }  
-}
+// Display the results from the FOOD API and MOVIE API calls
+function displayResultsFromAPIs() {
 
-
-// Display the results from the "Food API" (update screen using foodAPI variables)
-function displayResultsFromFoodAPI() {
-
-  // populate the webpage with the values from the variable foodDetails
-
-  // eg. 
-  // webpage element = foodDetails.Meal
-  // webpage element = foodDetails.MealThumb 
-  // etc.
-
-}
-
-
-// Search "Movie API" and Populate movieList variable with results
-// function searchMovieAPI(searchString) {
-
-  // // build API query for Movies
-  // var queryString = searchString.split(' ').join('_') // remove spaces
-
-  // var queryURL= apiURL_Movie + "?query=" + queryString + "&api_key=" + apiKey_Movie
-  // console.log("Movie queryURL = " + queryURL)
-
-  // // run API query
-  // fetch(queryURL).then(function (response) {
-  //     return response.json()
-  // }).then(function (data) {
-
-  //     // Check if a Movies were found
-  //     if (data.results === null) {
-  //         console.log("Movies NOT Found by API")
-
-  //     }
-  //     else {
-  //         console.log("Movies Found by API")
-  //     }
-
-
-  //     // For each movie returned by the Movie API
-  //     for (i=0; i< data.results.length; i++) {
-
-  //         if (data.results[i].adult === false) {  // filter out adult movies 
-
-  //             // save the movie Details to the variable (object) movieDetails
-  //             movieDetails.Title = data.results[i].title
-  //             movieDetails.OriginalTitle = data.results[i].original_title
-  //             movieDetails.OriginalLanguage = data.results[i].original_language
-  //             movieDetails.Overview = data.results[i].overview
-  //             movieDetails.Popularity = data.results[i].popularity
-  //             movieDetails.BackdropPath = data.results[i].backdrop_path
-  //             movieDetails.PosterPath = data.results[i].poster_path
-  //             movieDetails.ReleaseDate = data.results[i].release_date
-
-  //             // add the movie details to the movies List array
-  //             // notes : 
-  //             // A clone of the movieDetails is appended to the array (so that we are adding a string value and not an object reference)
-
-  //             let clone = JSON.parse(JSON.stringify(movieDetails))
-
-  //             moviesList.push(clone)
-
-  //         }
-
-  //     }
-
-  //     // sort the movies List by Popularity (descending order)
-  //     moviesList.sort((a,b) => b.Popularity - a.Popularity)
-
-
-  //   }) // end of Movie API fetch
-
-// }
-
-// Display the results from the "Movie API" (update WebPage using moviesList variable)
-function displayResultsFromMovieAPI() {
+  console.log("Food :")
+  console.log(foodDetails)
 
   console.log("Movies List :")
   console.log(moviesList)
@@ -420,30 +313,99 @@ function displayResultsFromMovieAPI() {
   console.log("Top Movie :")
   console.log(moviesList[0])
 
+  // Prepare webpage for Displaying Results
+  $('#searchPage').addClass('hidden');      // hide Search Page
+  $('#resultsPage').removeClass('hidden');  // display Results Page
 
-  // display the first Movie in the list onto the WebPage
-      
-  // eg. 
-  
-  // $('#movieText').text(moviesList[0].Title);
-
-  $('#movieText').text(moviesList[0].Title);
-  $('#resultsPage').removeClass('hidden');
-  if (moviesList[0].PosterPath) {
-  var fullimageURL = `https://image.tmdb.org/t/p/w500/${moviesList[0].PosterPath}`
-  console.log(fullimageURL);
-  } else {
-  var fullimageURL = `./assets/Img/no-image.jpg`;
-  console.log(fullimageURL);
-  }
-  $('#movieImage').attr('src', fullimageURL);
-  $('#searchPage').addClass('hidden');
-
+  // Display Food
   $('#foodText').text(foodDetails.Meal)
   $('#foodImage').attr("src", foodDetails.MealThumb );
   $('#foodImage').attr("alt", "Thumbnail of " + foodDetails.Meal);
-  // webpage element = moviesList[0].PosterPath 
-  // etc.
+
+  // Display Movie
+  $('#movieText').text(moviesList[0].Title);
+  
+  if (moviesList[0].PosterPath) {
+    var fullimageURL = `https://image.tmdb.org/t/p/w500/${moviesList[0].PosterPath}` // build path to image
+    console.log(fullimageURL);
+  } 
+  else {
+    var fullimageURL = `./assets/Img/no-image.jpg`; // display "no image" jpg if no image returned by API
+    console.log(fullimageURL);
+  }
+
+  $('#movieImage').attr('src', fullimageURL);
+  $('#movieImage').attr('alt', "Thumbnail of " + moviesList[0].Title);
+  
+}
+
+
+// MOVIE NAVIGATION
+// ----------------
+
+// Display NEXT MOVIE from the Movies List (array)
+function viewNext() {
+  
+  // set the Movie Index to the Next Movie in the List
+  if (movieIndex < moviesList.length -1) {
+    movieIndex = movieIndex + 1
+  }
+  else if (movieIndex === moviesList.length -1) {
+    movieIndex = 0
+  }
+
+  // display the Movie
+  $('#movieText').text(moviesList[movieIndex].Title);
+  
+  if (moviesList[movieIndex].PosterPath) {
+    var fullimageURL = `https://image.tmdb.org/t/p/w500/${moviesList[movieIndex].PosterPath}`
+    console.log(fullimageURL);
+  } else {
+    var fullimageURL = `./assets/Img/no-image.jpg`;
+    console.log(fullimageURL);
+  }
+
+  $('#movieImage').attr("src", fullimageURL);
+  $('#movieImage').attr('alt', "Thumbnail of " + moviesList[movieIndex].Title);
+}
+
+
+// Display PREVIOUS MOVIE from the Movies List (array)
+function viewPrevious() {
+
+  // set the Movie Index to the Previoius Movie in the List
+  if (movieIndex > 0) {
+    movieIndex = movieIndex - 1
+  }  
+  
+  // display the Movie
+  $('#movieText').text(moviesList[movieIndex].Title);
+  
+  if (moviesList[movieIndex].PosterPath) {
+    var fullimageURL = `https://image.tmdb.org/t/p/w500/${moviesList[movieIndex].PosterPath}`
+    console.log(fullimageURL);
+  } else {
+    var fullimageURL = `./assets/Img/no-image.jpg`;
+    console.log(fullimageURL);
+  }
+
+  $('#movieImage').attr("src", fullimageURL);
+  $('#movieImage').attr('alt', "Thumbnail of " + moviesList[movieIndex].Title);
+
+} 
+
+
+
+// UTILITY FUNCTIONS
+// -----------------
+
+// Random Number Generator
+function randomNum(min, max) {
+  
+  min = Math.ceil(min);
+  max = Math.floor(max);
+
+  return Math.floor(Math.random() * (max - min + 1) + min);
 
 }
 
@@ -453,40 +415,4 @@ function displayResultsFromMovieAPI() {
 init()  // this should run when index.html opens
 function init() {
   console.log("HTML reference to Javascript is ok")
-}
-
-function viewNext() {
-  if (movieIndex < moviesList.length) {
-    movieIndex = movieIndex + 1
-  }
-  $('#movieText').text(moviesList[movieIndex].Title);
-  if (moviesList[movieIndex].PosterPath) {
-  var fullimageURL = `https://image.tmdb.org/t/p/w500/${moviesList[movieIndex].PosterPath}`
-  console.log(fullimageURL);
-  } else {
-    var fullimageURL = `./assets/Img/no-image.jpg`;
-    console.log(fullimageURL);
-  }
-
-  $('#movieImage').attr("src", fullimageURL);
-}
-function viewPrevious() {
-  if (movieIndex > 0) {
-    movieIndex = movieIndex - 1
-  }  
-  $('#movieText').text(moviesList[movieIndex].Title);
-  if (moviesList[movieIndex].PosterPath) {
-  var fullimageURL = `https://image.tmdb.org/t/p/w500/${moviesList[movieIndex].PosterPath}`
-  console.log(fullimageURL);
-  } else {
-    var fullimageURL = `./assets/Img/no-image.jpg`;
-    console.log(fullimageURL);
-  }
-  $('#movieImage').attr("src", fullimageURL);
-} 
-
-function randomNum(min, max) {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min + 1) + min);
 }
